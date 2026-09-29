@@ -12,8 +12,11 @@ interface Props {
 export default function FAB({ label, onPress, onLongPress, position= 'right', }: Props) {
     return (
         <Pressable
-        style= {[styles.floatingButton, 
-        position == 'right' ? styles.positionRight : styles.positionLeft,]}
+        style= {({ pressed }) => [
+            styles.floatingButton, 
+            position == 'right' ? styles.positionRight : styles.positionLeft,
+            pressed ? { opacity: 0.7} : {opacity: 1},
+        ]}
         onPress={(onPress)}
         onLongPress= {(onLongPress)}
         >
